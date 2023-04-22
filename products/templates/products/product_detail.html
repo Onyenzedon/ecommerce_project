@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+Product Detail
+{% endblock title %}
+
+
+{% block content %}
+<!-- <div class="container">
+    <h3 class="my-auto">{{product.name}}'s Details</h3>
+    
+    {% for image in images %}
+    <div class="">
+        <img src="{{image.image.url}}" alt="" class="img-fluid">
+        <br><hr>
+    </div>
+    {% endfor %}
+        
+    {{product.name}}
+</div> -->
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h3 class="my-3 text-center">{{product.name}}'s Details</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        {% for image in images %}
+        <div class="col-md-4 col-sm-6 mb-4">
+            <img src="{{image.image.url}}" alt="no image" class="img-fluid" style="height: 300px; width: 300px">
+            <!-- <span>
+                <button class="btn danger">Delete Image</button>
+            </span> -->
+            <!-- {{image.id}} -->
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <p class="text-center">{{product.name}}</p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block contents %}
+
+<div id="carousel-example-1z" class="carousel slide carousel-fade" data-bs-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+        {% for p in images %}
+        <li data-bs-target="#carousel-example-1z" data-bs-slide-to="{{ forloop.counter0 }}"
+            class="{% if forloop.counter0 == 0 %} active {% endif %}"></li>
+        {% endfor %}
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+        {% for p in images %}
+        <div class="carousel-item {% if forloop.counter0 == 0 %} active {% endif %}">
+            <!-- <img class="d-block w-100" src="{{p.image.url}}" alt="First slide"> -->
+            <div class="col-md-4 col-sm-6 mb-4">
+                <img src="{{p.image.url}}" alt="" class="img-fluid">
+            </div>
+        </div>
+        {% endfor %}
+        <!--/First slide-->
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    </div>
+</div>
+
+{% endblock contents %}

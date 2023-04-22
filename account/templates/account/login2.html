@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Login</h1>
+
+{% if messages %}
+  
+  {% for message in messages %}
+    {{message}}
+  {% endfor %}
+    
+{% endif %}
+  
+{% if form.errors %}
+  <p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+<form method="POST" action="">
+    {% csrf_token %}
+    <!-- <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+    <label for="password">Password:</label>
+    <input type="password" name="password" id="password" required> -->
+    {{form.as_p}}
+    <input type="hidden" name="next" value="{{ next }}">
+    <input type="submit" value="Login" />
+  </form>
+{% endblock %}
