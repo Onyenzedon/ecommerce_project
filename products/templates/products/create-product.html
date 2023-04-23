@@ -13,7 +13,6 @@ Create Product
         <form action="" method="post" enctype="multipart/form-data">
             {% csrf_token %}
             {{product_form|crispy}}
-            {{image_form|crispy}}
 
             <input type="submit" value="Save">
         </form>

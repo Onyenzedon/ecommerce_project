@@ -37,9 +37,10 @@ class CategoryForm(forms.ModelForm):
 #         fields = ['image']
 
 class ProductForm(forms.ModelForm):
+    images = forms.ImageField(widget=forms.ClearableFileInput(attrs={'multiple': True}), required=False)
     class Meta:
         model = Product
-        fields = ('category', 'name', 'description', 'price', 'in_stock')
+        fields = ('category', 'name', 'description', 'price', 'in_stock', 'images')
 
 class ImageForm(forms.ModelForm):
     class Meta:

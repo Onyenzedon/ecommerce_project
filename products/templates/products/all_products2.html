@@ -208,15 +208,17 @@
                             <li class="nav-item acitve">
                                 <a class="nav-link text-white" href="#">All</a>
                             </li>
+                            {% for cat in categories %}
                             <li class="nav-item">
-                                <a class="nav-link text-white" href="#">Shirts</a>
+                                <a class="nav-link text-white" href="#">{{cat.name|title}}</a>
                             </li>
-                            <li class="nav-item">
+                            {% endfor %}
+                            <!-- <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Sport wears</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link text-white" href="#">Outwears</a>
-                            </li>
+                            </li> -->
 
                         </ul>
 
