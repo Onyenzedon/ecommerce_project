@@ -1,0 +1,24 @@
+{% extends '../base2.html' %}
+
+{% load static %}
+
+
+{% block content %}
+
+<div class="text-center">
+
+    
+    <h3>List Of Orders</h3>
+    
+    
+    {% for order in orders %}
+    
+    <div>
+        <div>Product: {{ order.}}</div>
+    </div>
+    {% endfor %}
+    
+</div>
+    
+{% endblock content %}
+    

@@ -14,13 +14,18 @@ def all_products(request, slug=None):
         products = Product.objects.all()
         images = Image.objects.filter(product__in=products)
         first_image = images.first()
+        last_image=images.last()
         context = {
             "products": products,
             "images": images,
             "first_image":first_image,
+            "last_image":last_image,
             'categories':categories
         }
-        template_name = "products/all_products2.html"
+        # template_name = "products/products_list.html"
+        template_name = "Aviato/index.html"
+        # template_name = "Aviato/shop.html"
+        
     else:
         product = Product.objects.get(slug=slug)
         images = Image.objects.filter(product=product)
@@ -32,7 +37,7 @@ def all_products(request, slug=None):
             "product_detail": product.name + " detail",
             'images': images
         }
-        template_name = "products/product_detail.html"
+        template_name = "products/product_details.html"
     return render(request, template_name, context)
 
 def product_detail(request):

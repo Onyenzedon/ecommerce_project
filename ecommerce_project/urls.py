@@ -23,8 +23,9 @@ from graphene_django.views import GraphQLView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("orders/", include('orders.urls')),
     path("accounts/", include("account.urls", namespace="account_app")),
-    path("products/", include("products.urls")),
+    path("", include("products.urls")),
 ]
 
 if settings.DEBUG: #add this

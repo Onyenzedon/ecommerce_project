@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+
+<div class="container my-5">
+    <h1 class="text-center mb-5">Product List</h1>
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+                <a href="#">
+                    <img class="card-img-top" src="{{ product.images.all.last.image.url }}" alt="product image"></a>
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <a href="{% url 'products:product_detail' product.slug %}">{{product.name}}</a>
+                    </h4>
+                    <h5>${{product.price}}</h5>
+                    <p class="card-text">{{product.description}}</p>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-primary">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+        <!-- Repeat the above product card for each product in your list -->
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
